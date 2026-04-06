@@ -116,21 +116,41 @@ img {
 	font-size: var(--small-font-size);
 }
 
-
 /* Card active by default, takes up more space */
+.card__active {
+	flex: 5;
+}
 
+.card__active .card__data {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.card__active:hover .card__img {
+	scale: 1.1;
+}
 
 /* Any card expands when you hover over it */
-
+.card__article:hover {
+	flex: 5;
+}
 
 /* If the hover is NOT on the card active, contract card active at base proportion */
-
+.card:has(.card__article:not(.card__active):hover) .card__active {
+	flex: 0 0 64px;
+}
 
 /* If the hover is NOT in card active, it also hides its contents */
-
+.card:has(.card__article:not(.card__active):hover) .card__active .card__data{
+	opacity: 0;
+	transform: translateY(2rem);
+}
 
 /* Show content on the other cards */
-
+.card__article:hover .card__data {
+	opacity: 1;
+	transform: translateY(0);
+}
 
 /*=============== BREAKPOINTS ===============*/
 /* For medium devices <> */
